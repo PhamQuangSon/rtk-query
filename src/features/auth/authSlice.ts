@@ -1,4 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit"
+import { RootState } from "../../app/store";
 
 const initialState = {
     token: null,
@@ -19,7 +20,7 @@ export const authSlice = createSlice({
     }
 });
 
-const selector = (state: any) => state['auth'];
+const selector = (state: RootState) => state.auth;
 
 export const selectToken = createSelector(
     selector,
