@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../app/hooks";
 import { getTokenFromUrl } from "../../spotify";
-import { selectToken, setToken } from "../auth/authSlice";
+import { setToken } from "../auth/authSlice";
 import "./Player.scss";
 import { Sidebar } from "./Sidebar";
 import { useNavigate } from "react-router-dom";
@@ -42,8 +41,9 @@ export function Player({ spotify }: any) {
         dispatch(setDiscoverWeekly(response));
         console.log("response", response);
       });
+      return;
     }
-    if (!_token && _token === undefined) {
+    if (_token === undefined) {
       navigate("/login");
     }
   }, [dispatch]);
